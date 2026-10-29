@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('contas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('nome');
+            $table->string('tipo');
+            $table->decimal('saldo_inicial', 12, 2)->default(0);
             $table->timestamps();
         });
     }

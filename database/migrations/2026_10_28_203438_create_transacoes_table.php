@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('transacoes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('conta_id')->constrained()->restrictOnDelete();
+            $table->foreignId('categoria_id')->constrained()->restrictOnDelete();
+            $table->string('descricao');
+            $table->decimal('valor', 12, 2);
+            $table->date('data');
+            $table->string('tipo');
             $table->timestamps();
         });
     }
